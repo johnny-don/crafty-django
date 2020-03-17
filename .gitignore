@@ -1,0 +1,7 @@
+*.sqlite3
+*.pyc
+.~c9
+_pycache_
+.env/
+*.env/
+*env/
