@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm
-from accounts.models import Profile
+from accounts.forms import UserLoginForm, UserRegistrationForm, ProfileRegistrationForm
+from django.contrib.auth import logout, authenticate, login
 
 
 def index(request):
@@ -49,22 +49,31 @@ def registration(request):
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
+        profile_form = ProfileRegistrationForm(request.POST, request.FILES)
+        
+       
 
-        if registration_form.is_valid():
-            registration_form.save()
+        if registration_form.is_valid() and profile_form.is_valid():
+            user = registration_form.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            
 
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
             else:
                 messages.error(request, "Sorry! Unable to register your account at this time")
     else:
         registration_form = UserRegistrationForm()
-    return render(request, 'registration.html', {
-        "registration_form": registration_form})
+        profile_form = ProfileRegistrationForm()
+        
+    return render(request, 'registration.html', 
+    {"form": registration_form, "profile": profile_form})
     
 def profile(request):
     return render(request, 'profile.html')

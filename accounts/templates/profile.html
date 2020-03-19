@@ -3,10 +3,17 @@
 {% block content %}
 
 <p>Username: {{ user }}</p>
-<p>First Name: {{ user.first_name }}</p>
-<p>Experience: {{ user.experience }}</p>
-<p>email: {{ user.email }}</p>
-<p>City: {{ user.userprofile.city }}</p>
-<p></p>
+<p>Experience: {{ user.profile.experience }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Address: {{ user.profile.address_one }}
+            {{ user.profile.address_two }}
+</p>
+<p>Country: {{ user.profile.country }}</p>
 
+<p>City: {{ user.profile.city }}</p>
+<p>Style: {{ user.profile.style }}</p>
+<p>Is your wood sustainably sourced? {{ user.profile.wood_source }}</p>
+
+
+<p>Have a link to the persons products</p>
 {% endblock %}

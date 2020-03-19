@@ -2,8 +2,9 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from django.contrib.auth import password_validation
-from accounts.models import Profile
+from .models import Profile
+
+
 
 
 class UserLoginForm(forms.Form):
@@ -13,28 +14,21 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     
 
-class UserRegistrationForm(forms.ModelForm):
+class UserRegistrationForm(UserCreationForm):
     """ Form used to sign up and register a new user"""
- 
-    first_name = forms.CharField(max_length=12)
-    last_name = forms.CharField(max_length=12)
+    username = forms.CharField(max_length=20)
+    first_name = forms.CharField(max_length=20)
+    last_name = forms.CharField(max_length=20)
     email = forms.EmailField(max_length=200)
-    username = forms.CharField( max_length=150,)
-    address1 = forms.CharField(max_length=100, label="Address Line 1")
-    address2 = forms.CharField(max_length=100, label="Address Line 2")
-    city = forms.CharField(max_length=50)
-    country = forms.CharField(max_length=100)
     password1 = forms.CharField(label="Password",  widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password Confirmation', widget=forms.PasswordInput)
-    experience = forms.CharField(max_length=300)
-    style = forms.CharField(max_length=200)
-    source = forms.BooleanField(label="Is your wood legally sourced?")
+   
     
     
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'address1', 'address2', 'city', 'country', 'experience', 'style', 'source')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
         
         
         
@@ -59,4 +53,17 @@ class UserRegistrationForm(forms.ModelForm):
         
         return password2
        
+class ProfileRegistrationForm(forms.ModelForm):
     
+    address_one = forms.CharField(max_length=100, label="Address")
+    address_two = forms.CharField(max_length=100, label="Address")
+    city = forms.CharField(max_length=50)
+    country = forms.CharField(max_length=100)
+    experience = forms.CharField(max_length=300)
+    style = forms.CharField(max_length=200)
+    wood_source = forms.BooleanField()
+    
+    
+    class Meta:
+        model = Profile
+        fields = ['address_one', 'address_two', 'city', 'country', 'experience', 'style', 'wood_source']
