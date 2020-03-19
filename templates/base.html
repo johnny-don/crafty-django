@@ -12,7 +12,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+     <nav>
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'registration' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <hr> {% if messages %}
+    <div>
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
+    {% endif %} 
     {% block content %}
     {% endblock %}
 </body>
-</html>
+<html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <h1>User Login</h1>
+    <nav>
+        <ul>
+            
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+        </ul>
+    </nav>
+
+    <hr> {% if messages %}
+    <div>
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
+    {% endif %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ login_form }}
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+{% endblock %}
