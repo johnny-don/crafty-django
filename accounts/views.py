@@ -32,10 +32,13 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password'])
+            return redirect(LOGIN_REDIRECT_URL)
             messages.success(request, "You have successfully logged in!")
+            
+            
            
 
-            if user:
+            if user: 
                 auth.login(user=user, request=request)
                 return redirect(LOGIN_REDIRECT_URL)
           
