@@ -20,15 +20,14 @@ def sell_product(request):
         sell_form = SellProductForm(request.POST)
         
         if sell_form.is_valid():
-            form = sell_form.save()
-            form.save()
+            sell_form.save()
             return redirect('allproducts.html')
             
         else:
-             messages.error(request, "Sorry! Unable to register your account at this time")
+             messages.error(request, "Sorry! Unable to post your product at this time")
              
     else:
         sell_form = SellProductForm()
         
     
-    return redirect("sellproduct.html", {'sell_form': sell_form})
+    return render(request, "sellproduct.html", {'sell_form': sell_form})
