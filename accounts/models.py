@@ -12,6 +12,7 @@ class Profile(models.Model):
     address_one = models.CharField(max_length=100)
     address_two = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
+    postcode = models.CharField(max_length=20, blank=True)
     country = models.CharField(max_length=100)
     experience = models.CharField(max_length=300)
     style = models.CharField(max_length=200)

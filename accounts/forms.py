@@ -58,6 +58,7 @@ class ProfileRegistrationForm(forms.ModelForm):
     address_one = forms.CharField(max_length=100, label="Address")
     address_two = forms.CharField(max_length=100, label="Address")
     city = forms.CharField(max_length=50)
+    postcode = forms.CharField(max_length=20)
     country = forms.CharField(max_length=100)
     experience = forms.CharField(max_length=300)
     style = forms.CharField(max_length=200)
@@ -66,4 +67,4 @@ class ProfileRegistrationForm(forms.ModelForm):
     
     class Meta:
         model = Profile
-        fields = ['address_one', 'address_two', 'city', 'country', 'experience', 'style', 'wood_source']
+        fields = ['address_one', 'address_two', 'city', 'country', 'experience', 'style', 'wood_source', 'postcode']
