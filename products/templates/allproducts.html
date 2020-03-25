@@ -4,14 +4,14 @@
 {% for product in products %}
 <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
     <div class="panel-body">
-        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
+        <img src="{{ MEDIA_URL }}{{ product.image }}"></img> 
         <h1>Products page</h1>
         <h3>{{ product.item }}</h3>
-        <p class="product-description">{{ product.description }}</p>
-        <p>{{ product.price }}</p>
-        <p>{{ product.wood }}</p>
-        <p>{{ product.style }}</p>
-        <p>{{ product.price }}</p>
+        <p class="product-description"><strong>Description: </strong>{{ product.description }}</p>
+        
+        <p><strong>Wood: </strong>{{ product.wood }}</p>
+        <p><strong>Style: </strong>{{ product.style }}</p>
+        <p><strong>Price: </strong>{{ product.price }}</p>
 
         <form method="POST" action="{% url 'add_to_cart' product.id %}">
             {% csrf_token %}

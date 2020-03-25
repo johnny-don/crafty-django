@@ -9,6 +9,7 @@ from accounts.forms import UserLoginForm, UserRegistrationForm, ProfileRegistrat
 from django.contrib.auth import logout, authenticate, login
 from products.views import get_products, sell_product
 from crafty.settings import LOGIN_REDIRECT_URL
+from products.models import Product
 
 
 def index(request):
@@ -32,19 +33,21 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password'])
-            return redirect(LOGIN_REDIRECT_URL)
             messages.success(request, "You have successfully logged in!")
             
             
            
 
-            if user: 
+            if user:
                 auth.login(user=user, request=request)
                 return redirect(LOGIN_REDIRECT_URL)
+              
           
              
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
+                
+            
     else:
         login_form = UserLoginForm()
     return  render(request, 'login.html', {'login_form': login_form})
@@ -82,6 +85,7 @@ def registration(request):
         
     return render(request, 'registration.html', 
     {"form": registration_form, "profile": profile_form})
-    
+
+@login_required    
 def profile(request):
     return render(request, 'profile.html')

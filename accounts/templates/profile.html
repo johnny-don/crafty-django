@@ -16,4 +16,9 @@
 
 
 <p>Have a link to the persons products</p>
+<div class="">
+{% for products in user_products %}
+<p>{{ products.price }}</p>
+{% endfor %}
+</div>
 {% endblock %}

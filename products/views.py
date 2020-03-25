@@ -9,15 +9,16 @@ from .models import Product
 from products.forms import SellProductForm
 
 # Create your views here.
-
+@login_required
 def get_products(request):
     products = Product.objects.all()
     return render(request, "allproducts.html", {"products": products})
     
-@login_required()
+@login_required
 def sell_product(request):
     if request.method =='POST':
         sell_form = SellProductForm(request.POST)
+        
         
         if sell_form.is_valid():
             sell_form.save()
