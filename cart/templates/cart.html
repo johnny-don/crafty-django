@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-{% load bootstrap_tags %}
+
 
 {% block content %}
 <div class="row row-flex">
@@ -22,7 +22,7 @@
                         <label for="exampleInputAmount" class="sr-only">New Qty</label>
                         <div class="input-group">
                             <div class="input-group-addon">Qty</div>
-                            <input name="quantity" type="number" min="0" max="999" class="form-control">
+                            <input name="quantity" type="number" min="0" max="1" class="form-control">
                             <div class="input-group-addon">{{item.quantity}}</div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
 <div class="row">
     <p>Total</p>
     <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <a href="/" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
 </div>
 
 {% endblock %}
