@@ -1,15 +1,9 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
 {% block content %}
 <body>
     <h1>User Login</h1>
-    <nav>
-        <ul>
-            
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-        </ul>
-    </nav>
+ 
 
     <hr> {% if messages %}
     <div>
@@ -19,7 +13,7 @@
     
      <form method="POST">
         {% csrf_token %}
-        {{ login_form }}
+        {{ login_form | as_bootstrap }}
         
    <!--     {% if request.GET.next %}
         <input type="hidden" name="next" value={{ request.GET.next }}>

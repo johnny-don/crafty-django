@@ -1,40 +1,86 @@
-{% load staticfiles %}
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crafty</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-{% block head_js %}
-{% endblock head_js %}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% block head_js %} {% endblock head_js %}
 
 </head>
+
 <body>
-     <nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'login' %}">Crafty</a>
+         {% if user.is_authenticated %}
+       
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               
+                <li class="nav-item active"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'sellproduct' %}">Sell</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'allproducts' %}">Products</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'view_cart' %}">
+                            <i class="fa fa-shipping-cart"></i>Cart
+                            {% if product_count > 0 %}
+                            <label class="badge badge-warning">{{ product_count }}</label></a> </li>
+                            {% endif %}
+                            
+                
+
+        {% else %}
+        {% endif %}
+           <!--     <li class="nav-item active"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'registration' %}">Register</a></li> -->
+        
+            </ul>
+            {% if user.is_authenticated %}
+            <form class="form-inline my-2 my-lg-0" action="{% url 'find' %}" method="get">
+                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="search">Search</button>
+            </form>
+            {% endif %}
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <!-- <nav>
         <ul>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="{% url 'sellproduct' %}">Sell</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a href="{% url 'allproducts' %}">Products</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'sellproduct' %}">Sell</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'allproducts' %}">Products</a></li>
             {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'registration' %}">Register</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
             {% endif %}
-             <li>
-                        <a href="{% url 'view_cart' %}">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'view_cart' %}">
                             <i class="fa fa-shipping-cart"></i>Cart
                             {% if product_count > 0 %}
                             <label class="badge badge-warning">{{ product_count }}</label>
                             {% endif %}
                         </a>
-                    </li>
+            </li>
         </ul>
     </nav>
 
@@ -42,15 +88,14 @@
     <div>
         {% for message in messages %} {{ message }} {% endfor %}
     </div>
-    {% endif %} 
+    {% endif %}
     <div class="container">
         <div class="display">
             <form action="{% url 'find' %}" method="get">
                 <input type="text" name="q">
                 <button type="search">Find</button>
             </form>
-        </div>
-    {% block content %}
-    {% endblock %}
+        </div> -->
+    {% block content %} {% endblock %}
 </body>
 <html>

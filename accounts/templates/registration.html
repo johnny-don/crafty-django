@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load bootstrap_tags %}
 {% block content %}
 
   
@@ -9,8 +10,8 @@
             <h3 class = 'heading' >Register </h3>
             <form method='POST' id="form">
             {% csrf_token %} 
-           <p>{{ form }}</p>
-              <p>{{ profile }}</p>
+           <p>{{ form | as_bootstrap}}</p>
+              <p>{{ profile | as_bootstrap }}</p>
             
         
             

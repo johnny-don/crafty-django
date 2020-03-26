@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
 
 <h3> Sell</h3>
 {% block content %}
 <h3> Sell</h3>
 
 <form method="POST">
-    {{ sell_form  }}
+    {{ sell_form | as_bootstrap  }}
     <button type="submit">Sell</button>
 </form>
 

@@ -15,6 +15,7 @@ from products.models import Product
 def index(request):
     """ Displays the index.html(homepage) file"""
     return render(request, 'index.html')
+        
 
 @login_required
 def logout(request):
