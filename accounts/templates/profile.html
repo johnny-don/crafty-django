@@ -2,23 +2,25 @@
 
 
 {% block content %}
-<div class="container">
-    <div class="row">
-<p>Username: {{ user  }}</p>
-<p>Experience: {{ user.profile.experience  }}</p>
-<p>Email: {{ user.email  }}</p>
-<p>Address: {{ user.profile.address_one  }}
-            {{ user.profile.address_two  }}
-</p>
-<p>Country: {{ user.profile.country  }}</p>
 
-<p>City: {{ user.profile.city  }}</p>
-<p>Style: {{ user.profile.style  }}</p>
-<p>Is your wood sustainably sourced? {{ user.profile.wood_source  }}</p>
+<div class="container-fluid">
 
-
-<p>Have a link to the persons products</p>
+<div class="card" style="width: 50rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ user  }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Email: {{ user.email  }}</h6>
+    <p class="card-text"Address: {{ user.profile.address_one  }}
+            {{ user.profile.address_two  }}.</p>
+        <p class="card-text">Country: {{ user.profile.country  }}</p>
+        <p class="card-text">City: {{ user.profile.city  }}</p>
+        <p class="card-text">Style: {{ user.profile.style  }}</p>
+        <p class="card-text">Experience: {{ user.profile.experience  }}</p>
+        <p class="card-text">Is your wood sustainably sourced?: {{ user.profile.wood_source  }}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
 </div>
 </div>
+
 
 {% endblock %}

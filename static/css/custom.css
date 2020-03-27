@@ -1,8 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Dancing+Script|Gentium+Basic|Great+Vibes|Kalam|Kaushan+Script|Pacifico|Parisienne|Sacramento|Yellowtail&display=swap');
+
+body {
+    background-image: url('/media/img/header4.png');
+}
+
+/* Navbar */
+
+.navbar
+{
+    background-color: rgba(255,255,255,0.5);
+    margin-bottom: 0px;
+    border-bottom: transparent;
+    background-image: none;
+}
+
+.navbar-brand {
+  font-family: 'Sacramento', cursive;
+  font-size: 3.5rem;
+}
+
+.nav-item {
+    font-family: 'Gentium Basic', serif;
+    color: #2F4F4F;
+    font-size: 1.75rem;
+    margin: 8px;
+    
+}
+
+.row {
+    text-align: center;
+}
+
+/* header */
+
+.header-text {
+    margin: 50px;
+}
+
 .masthead {
   height: 100vh;
   min-height: 500px;
-  background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+  background: transparent; 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+.masthead-product {
+  height: 20vh;
+  min-height: 150px;
+  background: transparent; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.info-text {
+    font-family: 'Gentium Basic', serif;
+    font-size: 3.5rem;
+    color: #2F4F4F;
+    font-weight: 500;
+}
+
+.info-subtext {
+    font-family: 'Gentium Basic', serif;
+    font-size: 2.0rem;
+    color: #2F4F4F;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: .5rem 1rem;
+    font-size: 2.0rem;
+    line-height: 2.5;
+    border-radius: .5rem;
+    margin: 20px;
+    width: 100px;
+    background-color: #f8f9fa
+}
+
+.buttons {
+    padding: .5rem 1rem;
+    font-size: 2.0rem;
+    line-height: 2.5;
+    border-radius: .5rem;
+    margin: auto;
+    width: 100px;
+    background-color: #f8f9fa
+}
+
+label {
+    display: inline-block;
+    max-width: 600%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 2.0rem;
+    font-family: 'Gentium Basic', serif;
+    color: #2F4F4F;
+}
+
+
+
+
+
+/* product display */
+
+.product {
+  margin: 30px;
+  border: thin;
+  padding: 10px;
+}
+
+.product-image {
+    margin: 20px;
+    
+}
+
+.quantity-box {
+    width: 20%;
+    height: 25px;
+    margin: 8px;
 }

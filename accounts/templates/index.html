@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
-{% block content %}
+
 <body>
+  {% block header %}
    
     <header class="masthead">
-  <div class="container h-100">
+  <div class="container h-50">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
-        <h1 class="font-weight-light">Vertically Centered Masthead Content</h1>
-        <p class="lead">A great starter layout for a landing page</p>
-        <a class="btn btn-default btn-sm sign" href="{% url 'login' %}" role="button">Login</a>
-       <a class="btn btn-default btn-sm sign" href="{% url 'registration' %}" role="button">Register</a>
+        <h1 class="font-weight-light info-text">Crafty is a boutique store where you can buy or sell one-off, handmade, bespoke wooden furniture.</h1>
+        <p class="info-subtext">If you are new to the site then Register below. If you are already a member then Welcome Back!</p>
+        <a class="btn btn btn-lg info-text" href="{% url 'login' %}" role="button">Login</a>
+       <a class="btn btn btn-lg info-text" href="{% url 'registration' %}" role="button">Register</a>
       </div>
     </div>
   </div>
 </header>
-</body>
+{% endblock header %}
+{% block content %}
 {% endblock %}
+</body>

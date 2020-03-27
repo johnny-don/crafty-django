@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 
-<h3> Sell</h3>
-{% block content %}
-<h3> Sell</h3>
 
-<form method="POST">
-    {{ sell_form | as_bootstrap  }}
-    <button type="submit">Sell</button>
+{% block content %}
+<header class="masthead-product">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 text-center header-text">
+        <h1 class="font-weight-light info-text">Sell your personal, handmade items online. No store front needed</h1>
+        <p class="info-subtext">We take the stress out of business, so you can focus on your craft </p>
+        </div>
+
+</div>
+</div>
+ </header>
+ <hr>
+<div class="container">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ sell_form | as_bootstrap }}
+    <input class="buttons info-text" type="submit">Sell</input>
 </form>
+</div>
 
 {% endblock %}
