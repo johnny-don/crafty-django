@@ -14,7 +14,10 @@ from products.models import Product
 
 def index(request):
     """ Displays the index.html(homepage) file"""
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        return redirect('allproducts')
+    else:
+        return render(request, 'index.html')
         
 
 @login_required
@@ -89,5 +92,4 @@ def registration(request):
 
 @login_required    
 def profile(request):
-    products = Product.objects.get(Product, pk=pk)
-    return render(request, 'profile.html', {'products':products})
+    return render(request, 'profile.html')

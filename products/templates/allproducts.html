@@ -23,16 +23,16 @@
         <p class="info-text"><strong>Wood: </strong>{{ product.wood }}</p>
         <p class="info-text"><strong>Style: </strong>{{ product.style }}</p>
         <p class="info-text"><strong>Price: </strong>{{ product.price }}</p>
+        <div class="container">
         <form method="POST" action="{% url 'add_to_cart' product.id %}">
             {% csrf_token %}
-           
-                <input class="quantity-box" name="quantity" type="number" min="0" max="5" placeholder="Quantity">
                 <span>
                             <button class="btn buttons info-text" type="submit">Add</button>
-                        </span>
+                </span>
            
 
         </form>
+        </div>
         </div>
     </div>
 </div>

@@ -108,7 +108,7 @@ label {
 
 .product {
   margin: 40px;
-  border: groove;
+  border: ridge;
   padding: 10px;
 }
 
@@ -146,5 +146,5 @@ label {
 
 .card-body {
     
-    border: groove;
+    border: ridge;
 }
