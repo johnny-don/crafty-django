@@ -2,25 +2,44 @@
 
 
 {% block content %}
+<header class="masthead-product">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 text-center header-text">
+        <h1 class="font-weight-light info-text">Our range of products have been handmade just for you</h1>
+        <p class="info-subtext">If you see something you like just add it to the cart </p>
+        </div>
 
-<div class="container-fluid">
+</div>
+</div>
+ </header>
 
-<div class="card" style="width: 50rem;">
+<div class="container">
+  <div class="row">
+
+<div class="card profile">
   <div class="card-body">
-    <h5 class="card-title">{{ user  }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Email: {{ user.email  }}</h6>
+    <h5 class="card-title info-text">{{ user  }}</h5>
+    <h6 class="card-subtitle info-text mb-2 text-muted">Email: {{ user.email  }}</h6>
     <p class="card-text"Address: {{ user.profile.address_one  }}
             {{ user.profile.address_two  }}.</p>
-        <p class="card-text">Country: {{ user.profile.country  }}</p>
-        <p class="card-text">City: {{ user.profile.city  }}</p>
-        <p class="card-text">Style: {{ user.profile.style  }}</p>
-        <p class="card-text">Experience: {{ user.profile.experience  }}</p>
-        <p class="card-text">Is your wood sustainably sourced?: {{ user.profile.wood_source  }}</p>
+        <p class="info-text">Country: {{ user.profile.country  }}</p>
+        <p class="info-text">City: {{ user.profile.city  }}</p>
+        <p class="info-text">Style: {{ user.profile.style  }}</p>
+        <p class="info-text">Experience: {{ user.profile.experience  }}</p>
+        <p class="info-text">Is your wood sustainably sourced?: {{ user.profile.wood_source  }}</p>
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>
 </div>
+</div>
+
+{% for product in products %}
+<div class="container">
+  <p>{{ product.item }} </p>
+</div>
+{% endfor %}
 
 
 {% endblock %}

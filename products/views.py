@@ -17,12 +17,12 @@ def get_products(request):
 @login_required
 def sell_product(request):
     if request.method =='POST':
-        sell_form = SellProductForm(request.POST)
+        sell_form = SellProductForm(request.POST, request.FILES)
         
         
         if sell_form.is_valid():
             sell_form.save()
-            return redirect('allproducts.html')
+            return redirect(reverse('allproducts'))
             
         else:
              messages.error(request, "Sorry! Unable to post your product at this time")

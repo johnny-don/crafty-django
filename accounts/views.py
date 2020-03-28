@@ -89,4 +89,5 @@ def registration(request):
 
 @login_required    
 def profile(request):
-    return render(request, 'profile.html')
+    products = Product.objects.get(Product, pk=pk)
+    return render(request, 'profile.html', {'products':products})
