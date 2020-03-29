@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Dancing+Script|Gentium+Basic|Great+Vibes|Kalam|Kaushan+Script|Pacifico|Parisienne|Sacramento|Yellowtail&display=swap');
 
+/* all css here is custom */
+
 body {
-    background-image: url('/media/img/header4.png');
+    background-image: url('https://crafty-django.s3.eu-west-2.amazonaws.com/static/header4.png');
+    
 }
 
 /* Navbar */

@@ -1,33 +1,34 @@
-{% extends "base.html" %} {% load bootstrap_tags %} 
+{% extends "base.html" %} {% load bootstrap_tags %}
+<!-- Login page for user who already have an account -->
 
 <body>
-     {% block content %}
-   
+    {% block content %}
+
     <header class="masthead">
-  <div class="container h-50">
-    <div class="row h-100 align-items-center">
-      <div class="col-12 text-center">
-        <h1 class="font-weight-light info-text">Welcome back. We hope you find exactly what you are looking for.</h1>
-        <p class="info-subtext">Make sure you check out the latest designs in our product section </p>
-       
-      </div>
-    </div>
-        <hr> {% if messages %}
-    <div>
-        {% for message in messages %} {{ message }} {% endfor %}
-    </div>
-    {% endif %}
-    <div class="container">
-<form method="POST">
-        {% csrf_token %}
-        <div class="text-info">{{ login_form | as_bootstrap }}
-        </div>
-        <button class="buttons info-text" type="submit">Login</button>
-    </form>
-    </div>
- 
-</header>
-{% endblock  %}
+        <div class="container h-50">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="font-weight-light info-text">Welcome back. We hope you find exactly what you are looking for.</h1>
+                    <p class="info-subtext">Make sure you check out the latest designs in our product section </p>
+
+                </div>
+            </div>
+            <hr> {% if messages %}
+            <div>
+                {% for message in messages %} {{ message }} {% endfor %}
+            </div>
+            {% endif %}
+            <div class="container">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="text-info">{{ login_form | as_bootstrap }}
+                    </div>
+                    <button class="buttons info-text" type="submit">Login</button>
+                </form>
+            </div>
+
+    </header>
+    {% endblock %}
 </body>
 
 

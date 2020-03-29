@@ -92,4 +92,5 @@ def registration(request):
 
 @login_required    
 def profile(request):
+    """Renders user's profile"""
     return render(request, 'profile.html')

@@ -11,11 +11,13 @@ from products.forms import SellProductForm
 # Create your views here.
 @login_required
 def get_products(request):
+    """Get the products from the database and Display all the products """
     products = Product.objects.all()
     return render(request, "allproducts.html", {"products": products})
     
 @login_required
 def sell_product(request):
+    """Save the new product in the database"""
     if request.method =='POST':
         sell_form = SellProductForm(request.POST, request.FILES)
         

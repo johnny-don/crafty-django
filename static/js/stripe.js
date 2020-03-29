@@ -1,3 +1,5 @@
+/* JS taken from stripe and code institute */
+
 $(function() {
     $("#payment-form").submit(function() {
         var form = this;

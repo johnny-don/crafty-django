@@ -12,6 +12,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 
 def checkout(request):
+    """Process the payment through stripe """
     if request.method=="POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)

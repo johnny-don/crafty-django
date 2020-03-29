@@ -1,42 +1,35 @@
-{% extends "base.html" %}
-{% load static from staticfiles %}
-{% load bootstrap_tags %}
+{% extends "base.html" %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block head_js %}
+<!-- stripe javascript for processing payment. Taken from stripe and code institute -->
 
-
-{% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
+    Stripe.publishableKey = '{{ publishable }}';
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock head_js %}
+{% endblock head_js %} {% block content %}
 
-{% block content %}
+
 <div class="container">
-<div class="row">
-    {% for item in cart_items %}
-        
-            <div class="col-12 product">
-                <img class="product-image" src="{{ MEDIA_URL }}{{ item.product.image }}"></img>
+    <div class="row">
+        {% for item in cart_items %}
 
-                
-                    <h3 class="info-text">Item: <i>{{ item.product.item }}</i></h3>
-                   
-                    <p class="info-text">Price: {{ item.product.price }}</p>
-                
-            </div>
-        
-    {% endfor %}
-    <div class="container">
-        <div class="row">
-                                <p class="info-text"><strong>Total</strong></p>
+        <div class="col-12 product">
+            <img class="product-image" src="{{ MEDIA_URL }}{{ item.product.image }}"></img>
+            <h3 class="info-text">Item: <i>{{ item.product.item }}</i></h3>
+            <p class="info-text">Price: {{ item.product.price }}</p>
+
+        </div>
+
+        {% endfor %}
+        <div class="container">
+            <div class="row">
+                <p class="info-text"><strong>Total</strong></p>
                 <p class=" info-text"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
+            </div>
         </div>
     </div>
-               
-</div>
 </div>
 
 
@@ -52,7 +45,7 @@
     </div>
 
     <div class="form-group col-md-6">
-        {{ payment_form | as_bootstrap  }}
+        {{ payment_form | as_bootstrap }}
     </div>
 
     {% csrf_token %}

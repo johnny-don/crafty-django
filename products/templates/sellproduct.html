@@ -1,7 +1,6 @@
-{% extends "base.html" %}
-{% load bootstrap_tags %}
+{% extends "base.html" %} {% load bootstrap_tags %}
 
-
+<!-- displays a form that allows the user to sell a product through the website -->
 {% block content %}
 <header class="masthead-product">
   <div class="container">
@@ -9,18 +8,17 @@
       <div class="col-12 text-center header-text">
         <h1 class="font-weight-light info-text">Sell your personal, handmade items online. No store front needed</h1>
         <p class="info-subtext">We take the stress out of business, so you can focus on your craft </p>
-        </div>
+      </div>
 
-</div>
-</div>
- </header>
- <hr>
+    </div>
+  </div>
+</header>
+<hr>
 <div class="container">
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ sell_form | as_bootstrap }}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{ sell_form | as_bootstrap }}
     <input class="buttons info-text" type="submit"></input>
-</form>
+  </form>
 </div>
 
 {% endblock %}

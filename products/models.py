@@ -8,7 +8,7 @@ from accounts.models import User
 # Create your models here.
 
 class Product(models.Model):
-    
+    """The model of the products"""
     item = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images')
     wood = models.CharField(max_length=50)
