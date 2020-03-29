@@ -19,8 +19,8 @@ django-crispy-forms==1.9.0
 django-forms-bootstrap==3.1.0
 django-storages==1.9.1
 docutils==0.15.2
-enum34==1.1.10
-futures==3.3.0
+
+
 idna==2.9
 
 Inflector==2.0.12
