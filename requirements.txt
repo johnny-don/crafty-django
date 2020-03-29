@@ -21,6 +21,7 @@ django-storages==1.9.1
 docutils==0.15.2
 
 
+gunicorn==19.10.0
 idna==2.9
 
 Inflector==2.0.12
