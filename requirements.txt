@@ -3,7 +3,8 @@ astroid==1.6.6
 awscli==1.18.17
 backports.functools-lru-cache==1.6.1
 beautifulsoup4==4.8.2
-botocore==1.15.17
+boto3==1.12.31
+botocore==1.15.31
 certifi==2019.11.28
 cffi==1.14.0
 chardet==3.0.4
@@ -12,13 +13,14 @@ colorama==0.4.3
 configparser==4.0.2
 cryptography==2.8
 dj-database-url==0.5.0
-Django==1.11.24
+Django==1.11.29
 django-bootstrap4==1.1.1
 django-crispy-forms==1.9.0
 django-forms-bootstrap==3.1.0
+django-storages==1.9.1
 docutils==0.15.2
 enum34==1.1.10
-
+futures==3.3.0
 idna==2.9
 
 Inflector==2.0.12
