@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-12 text-center header-text">
-                <h1 class="font-weight-light info-text">Our range of products have been handmade just for you</h1>
-                <p class="info-subtext">If you see something you like just add it to the cart </p>
+                <h1 class="font-weight-light info-text">Almost there. You can adjust the amount of products you want to buy</h1>
+                <p class="info-subtext">Or select zero to delete it from your cart </p>
             </div>
 
         </div>
@@ -24,6 +24,18 @@
 
                 <p class="info-text"><strong>Price: </strong>{{ item.product.price }}</p>
 
+
+                <form method="post" action="{% url 'adjust_cart' item.id %}">
+                    {% csrf_token %}
+                    <div>
+                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                        <div>
+                            <div>Qty</div>
+                            <input name="quantity" type="number" min="0" max="5">
+                            <div>{{item.quantity}}</div>
+                        </div>
+                    </div>
+                </form>
                 {% endfor %}
 
 
